@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SelectBox from "./components/SelectBox/SelectBox";
 
+const HOST = import.meta.env.VITE_HOST;
+
 const App = () => {
   const [message, setMessage] = useState('');
 
@@ -43,7 +45,7 @@ const App = () => {
   }
 
   try {
-    const response = await fetch('https://ai-brand-name.vercel.app:5000/completions', options);
+    const response = await fetch(HOST, options);
     const data = await response.json();
     //console.log("DATA: ", data);
     setMessage(data.choices[0].message.content);
