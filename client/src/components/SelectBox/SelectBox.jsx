@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useId } from "react";
+import './SelectBox.css';
 
-const SelectBox = ({ options, onSelectChange }) => {
+const SelectBox = ({ options, onSelectChange, selectLabel }) => {
   const [selectedValue, setSelectedValue] = useState("");
+  const selID = useId();
 
   const handleSelectChange = event => {
     const value = event.target.value;
@@ -10,13 +12,16 @@ const SelectBox = ({ options, onSelectChange }) => {
   };
 
   return (
-    <select value={selectedValue} onChange={handleSelectChange}>
+    <>
+    <label htmlFor={selID}>{selectLabel}</label>
+    <select id={selID} name={selID} value={selectedValue} onChange={handleSelectChange}>
       {options.map((option, index) => (
         <option key={index} value={option.value}>
           {option.label}
         </option>
       ))}
     </select>
+    </>
   );
 };
 

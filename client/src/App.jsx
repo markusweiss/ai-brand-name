@@ -6,9 +6,9 @@ const HOST = import.meta.env.VITE_HOST;
 const App = () => {
   const [message, setMessage] = useState('');
 
-  const [selectedValueOne, setSelectedValueOne] = useState("");
+  const [selectedValueOne, setSelectedValueOne] = useState("3");
   const [selectedValueTwo, setSelectedValueTwo] = useState("");
-  const [selectedValueThree, setSelectedValueThree] = useState("");
+  const [selectedValueThree, setSelectedValueThree] = useState("all people");
   const [selectedValueFour, setSelectedValueFour] = useState("");
 
   const handleSelectChangeOne = value => {
@@ -28,10 +28,9 @@ const App = () => {
   };
 
 
-  const question=`Erfinde bitte ${selectedValueOne} zufällige ${selectedValueTwo} in der Branche ${selectedValueFour} bestehend aus maximal zwei Wörtern, Zielgruppe sind ${selectedValueThree}.`; 
+  const question=`Generate ${selectedValueOne} random ${selectedValueTwo} in the industry ${selectedValueFour} consisting of a maximum of two words, target group are ${selectedValueThree}.`; 
 
   const optionsA = [
-    { value: "", label: "" },
     { value: "3", label: "3" },
     { value: "5", label: "5" },
     { value: "10", label: "10" }
@@ -39,20 +38,20 @@ const App = () => {
 
   const optionsB = [
     { value: "", label: "" },
-    { value: "contemporary names", label: "Zeitgenössische Namen" },
-    { value: "traditional names", label: "Traditionelle Namen" },
-    { value: "corporate names", label: "Firmennamen" },
-    { value: "dynamic names", label: "Dynamische Namen" },
-    { value: "fantasy names", label: "Fantasie Namen" },
-    { value: "informal names", label: "Informelle Namen" },
-    { value: "elegant names", label: "Elegante Namen" },
-    { value: "technical names", label: "Technische Namen" },
-    { value: "provocative names", label: "Provozierende Namen" }
+    { value: "contemporary brand names", label: "Zeitgenössische Namen" },
+    { value: "traditional brand names", label: "Traditionelle Namen" },
+    { value: "corporate brand names", label: "Firmennamen" },
+    { value: "dynamic brand names", label: "Dynamische Namen" },
+    { value: "fantasy brand names", label: "Fantasie Namen" },
+    { value: "informal brand names", label: "Informelle Namen" },
+    { value: "elegant brand names", label: "Elegante Namen" },
+    { value: "technical brand names", label: "Technische Namen" },
+    { value: "provocative brand names", label: "Provozierende Namen" }
     
   ];
 
   const optionsC = [
-    { value: "alle", label: "" },
+    { value: "all people", label: "alle" },
     { value: "Kids", label: "Kinder" },
     { value: "Women", label: "Frauen" },
     { value: "Men", label: "Männer" }
@@ -100,13 +99,13 @@ const App = () => {
   return (
     <div>
       <h1>Hey AI generiere mir einen Namen mit folgenden Parametern:</h1>
-      Anzahl: <SelectBox options={optionsA} onSelectChange={handleSelectChangeOne} />
+      <SelectBox selectLabel="Anzahl Namen:" options={optionsA} onSelectChange={handleSelectChangeOne} />
       <br />
-      Namen Typ: <SelectBox options={optionsB} onSelectChange={handleSelectChangeTwo} />
+      <SelectBox selectLabel="Namen Typ:" options={optionsB} onSelectChange={handleSelectChangeTwo} />
       <br />
-      Zielgruppe: <SelectBox options={optionsC} onSelectChange={handleSelectChangeThree} />
+      <SelectBox selectLabel="Zielgruppe:" options={optionsC} onSelectChange={handleSelectChangeThree} />
       <br />
-      Branche: <SelectBox options={optionsD} onSelectChange={handleSelectChangeFour} />
+      <SelectBox selectLabel="Branche:" options={optionsD} onSelectChange={handleSelectChangeFour} />
       <hr></hr>
       {message.split('\n').map((line, index) => (
         <span key={index}>
@@ -115,7 +114,7 @@ const App = () => {
         </span>
       ))}
       <hr></hr>
-      <div id="submit" onClick={getMessages}>Frage stellen</div>
+      <div id="submit" onClick={getMessages}>Generiere Namen</div>
 
     </div> 
   );

@@ -1,0 +1,10 @@
+select {
+    width: 300px;
+    line-height: 1.5;
+    height: 2rem;
+    font-size: 1rem;
+}
+
+label {
+    display: block;
+}
