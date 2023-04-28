@@ -1,11 +1,11 @@
-import React, { useState, useId } from "react";
+import React, { useState, useId } from 'react';
 import './SelectBox.css';
 
 const SelectBox = ({ options, onSelectChange, selectLabel }) => {
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
   const selID = useId();
 
-  const handleSelectChange = event => {
+  const handleSelectChange = (event) => {
     const value = event.target.value;
     setSelectedValue(value);
     onSelectChange(value);
@@ -13,14 +13,19 @@ const SelectBox = ({ options, onSelectChange, selectLabel }) => {
 
   return (
     <>
-    <label htmlFor={selID}>{selectLabel}</label>
-    <select id={selID} name={selID} value={selectedValue} onChange={handleSelectChange}>
-      {options.map((option, index) => (
-        <option key={index} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
+      <label htmlFor={selID}>{selectLabel}</label>
+      <select
+        id={selID}
+        name={selID}
+        value={selectedValue}
+        onChange={handleSelectChange}
+      >
+        {options.map((option, index) => (
+          <option key={index} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </>
   );
 };
