@@ -1,9 +1,17 @@
 {
-  "dependencies": {
-    "concurrently": "^7.0.0"
-  },
+  "name": "ai-brand-name-root",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
-    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run build\""
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "npm run build --prefix client && npm run start --prefix server"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
   }
 }
+
+
+
+

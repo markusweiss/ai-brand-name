@@ -5,8 +5,15 @@
 goto client and server folder
 
 ```
-    npm i
+    npm i 
 ```
+
+if this didn`t work try:
+
+```
+    npm install --legacy-peer-deps
+```
+
 
 ## Change .env_example
 
