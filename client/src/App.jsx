@@ -27,7 +27,22 @@ const App = () => {
     setSelectedValueFour(value);
   };
 
-  const question = `Generate ${selectedValueOne} random ${selectedValueTwo} in the industry ${selectedValueFour} consisting of a maximum of two words, target group are ${selectedValueThree}.`;
+  //const question = `Generate ${selectedValueOne} random ${selectedValueTwo} in the industry ${selectedValueFour} consisting of a maximum of two words, target group are ${selectedValueThree}.`;
+  // Dynamische Fallbacks für leere Auswahlfelder
+
+  const nameType = selectedValueTwo || 'brand names';
+  const industryText = selectedValueFour
+    ? `for the ${selectedValueFour} industry`
+    : 'for a general market';
+
+  const question = `Act as an expert branding specialist and copywriter. 
+Generate a list of exactly ${selectedValueOne} random ${nameType} ${industryText}.
+
+Strict constraints:
+- Minimum length: 1 words per item.
+- Maximum length: 3 words per item.
+- Target audience: ${selectedValueThree}.
+- Output format: Return only a clean, numbered list without any introductory or concluding text.`;
 
   const optionsA = [
     { value: '3', label: '3' },
@@ -104,7 +119,7 @@ const App = () => {
   ];
 
   const getMessages = async () => {
-    console.log('Q:', { question });
+    console.log('Question:', { question });
     const options = {
       method: 'POST',
       headers: {
