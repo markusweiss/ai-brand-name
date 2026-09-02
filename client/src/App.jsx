@@ -27,9 +27,6 @@ const App = () => {
     setSelectedValueFour(value);
   };
 
-  //const question = `Generate ${selectedValueOne} random ${selectedValueTwo} in the industry ${selectedValueFour} consisting of a maximum of two words, target group are ${selectedValueThree}.`;
-  // Dynamische Fallbacks für leere Auswahlfelder
-
   const nameType = selectedValueTwo || 'brand names';
   const industryText = selectedValueFour
     ? `for the ${selectedValueFour} industry`
